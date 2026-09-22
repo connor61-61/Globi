@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>World Explorer — beta</title>
+<meta name="description" content="A beta travel-discovery site: browse country overviews, tourism ratings, top attractions, and a daily budget calculator for a handful of popular destinations." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="#" class="brand"><span class="brand-mark">✦</span> World Explorer <span class="beta-tag">BETA</span></a>
+    <div class="header-actions">
+      <label for="search-input" class="visually-hidden">Search countries</label>
+      <input id="search-input" class="search-input" type="search" placeholder="Search a country or capital…" />
+      <button id="random-btn" class="btn btn-outline btn-small">Surprise me</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="hero-eyebrow">A working beta — 6 destinations, more on the way</p>
+    <h1>Figure out where to go before you figure out how to pack.</h1>
+    <p class="lede">Overview, tourism ratings, top attractions, and a daily budget calculator for a first batch of popular countries. Pick two to compare, or let the site pick one for you.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="num">6</span><span class="label">countries in this beta</span></div>
+      <div class="hero-stat"><span class="num">4</span><span class="label">continents covered</span></div>
+      <div class="hero-stat"><span class="num">15</span><span class="label">rated tourism categories</span></div>
+    </div>
+  </section>
+
+  <section class="filter-bar" aria-label="Filters">
+    <div id="continent-chips" role="group" aria-label="Filter by continent"></div>
+    <div class="spacer"></div>
+    <label for="sort-select" class="visually-hidden">Sort destinations</label>
+    <select id="sort-select" class="sort-select">
+      <option value="overall-desc">Sort: highest rated</option>
+      <option value="affordability-desc">Sort: most affordable</option>
+      <option value="cost-asc">Sort: cheapest daily cost</option>
+      <option value="name-asc">Sort: name A–Z</option>
+    </select>
+  </section>
+
+  <section class="section" aria-labelledby="map-heading">
+    <h2 id="map-heading" class="section-heading">Map</h2>
+    <p class="section-sub">Pins follow your search and region filters below — click one to open that country.</p>
+    <div id="map"></div>
+  </section>
+
+  <section class="section" aria-labelledby="grid-heading">
+    <h2 id="grid-heading" class="section-heading">Destinations</h2>
+    <p class="section-sub" id="result-count"></p>
+    <div id="detail-panel" class="detail-panel" hidden></div>
+    <div id="country-grid" class="country-grid"></div>
+  </section>
+
+  <section class="section compare-panel" aria-labelledby="compare-heading">
+    <h2 id="compare-heading">Compare two countries</h2>
+    <p class="section-sub">Ratings, cost, and timing, side by side.</p>
+    <div class="compare-pickers">
+      <div>
+        <label for="compare-a" class="visually-hidden">First country</label>
+        <select id="compare-a"></select>
+      </div>
+      <div>
+        <label for="compare-b" class="visually-hidden">Second country</label>
+        <select id="compare-b"></select>
+      </div>
+    </div>
+    <table class="compare-table" id="compare-table"></table>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="disclaimer">This is a beta demo. Tourism ratings are an illustrative scoring system made for this build (not sourced from an external ratings provider), and costs are rough, rounded estimates — verify anything travel-critical (visas, safety, prices) against an official or current source before booking.</p>
+    <p>World Explorer — beta build.</p>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
